@@ -1,0 +1,75 @@
+<div class="login-wrap">
+  <div class="login-html">
+
+    <input id="tab-2" type="radio" name="tab" class="sign-up" checked>
+    <label for="tab-2" class=tab>Sign up</label>
+    <div class="login-form">
+
+      <div class="sign-in-htm">
+
+      </div>
+
+
+      <!--sign up-->
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="sign-up-htm">
+          <!-- -tz- -->
+          <div class="group">
+            <label for="user" class="label">tz</label>
+            <input id="user" name="tz" formControlName="tz" type="text" class="input" data-type="tz" 
+              [ngClass]="{ 'is-invalid': submitted && f.tz.errors }">
+            <div *ngIf="  f.tz.errors" class="invalid-feedback">
+              <div *ngIf="f.tz.errors.required&&f.tz.value&&f.tz.touched">Tz is required</div>
+              <div *ngIf="f.tz.errors.validateTz&&f.tz.value&&f.tz.touched">Tz is not ok</div>
+            </div>
+          </div>
+          <!-- -age- -->
+          <div class="group">
+            <label for="rptpass" class="label">age</label>
+            <input id="rptpass" name="age" formControlName="age" type="text" class=input data-type="age" 
+              [ngClass]="{ 'is-invalid': submitted && f.age.errors }">
+            <div *ngIf=" f.age.errors" class="invalid-feedback">
+              <div *ngIf="f.age.errors.required&&f.age.value&&f.age.touched">Age is required</div>
+              <div *ngIf="f.age.errors.validateAge&&f.age.value&&f.age.touched">Age must be between 0 -120</div>
+            </div>
+
+            <!-- -name- -->
+            <div class="group">
+              <label for="pass" class="label">name</label>
+              <input id="pass" name="name" formControlName="firstName" type="text" class=input data-type="name" 
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+              <div *ngIf="f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required&&f.firstName.value&&f.firstName.touched">First Name is required</div>
+                <div *ngIf="f.firstName.errors.minlength&&f.firstName.value&&f.firstName.touched">First Name must be more 3 characters</div>
+                <div *ngIf="f.firstName.errors.maxlength&&f.firstName.value&&f.firstName.touched">First Name must be less 15 characters</div>
+              </div>
+            </div>
+            <!-- -isMale- -->
+            <div class="group">
+              <label for="pass" class="label">male/female</label>
+              <input id="pass" name="isMale" type="checkbox" class="input" required checked="checked">
+            </div>
+            <div class="group">
+          <label for="pass" class="label">country</label>
+          <input id="pass" name="country" formControlName="country" type="text" class=input data-type="country"  
+          [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+          <div *ngIf=" f.country.errors" class="invalid-feedback">
+              <div *ngIf="f.country.errors.required&&f.country.value&&f.country.touched">Country is required</div>
+              <div *ngIf="f.country.errors.validateCountry&&f.country.value&&f.country.touched">Country is not ok</div>
+            </div>
+          
+        </div>
+            <div class="group">
+              <input type="submit" class="button" value="sign up" [disabled]="registerForm.invalid">
+            </div>
+            <div class="hr"></div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+</div>
